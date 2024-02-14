@@ -1,38 +1,49 @@
-.App {
+/* App.css */
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr; /* Two columns with 1:2 width */
+  grid-gap: 0px; /* Gap between columns */
   text-align: center;
+  position: relative; /* Make the container position relative */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#addNotes {
+  background-color: #ffffff;
+  height: 100vh;
+  position: relative; /* Make the container position relative */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#addNoteButtonContainer {
+  position: absolute; /* Position the container absolutely */
+  bottom: 20px; /* Align to the bottom */
+  right: 20px; /* Align to the right */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#showNotes {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #dae5f5;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+#backgroundImageCSS {
+  font-weight: 500;
+  width: 32vw;
+  padding:100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#backgroudImage {
+  width: 32vw;
+}
+
+#text02 {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Align items vertically */
+  justify-content: center;
+}
+
+#text02 p {
+  margin-left: 5px; /* Add a small margin between the icon and text */
 }
