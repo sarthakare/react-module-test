@@ -1,10 +1,22 @@
 // AddNoteButton.js
-import React from 'react';
-import './AddNoteButton.css'; // Import the CSS file for styling
+import "./AddNoteButton.css";
+import React, { useState } from "react";
+import Popup from "./PopUp";
 
-const AddNoteButton = ({ onClick }) => {
+const AddNoteButton = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
   return (
-    <button className="add-note-button" onClick={onClick}>+</button> // Apply the CSS class
+    <div>
+      <button id="add-note-button" onClick={togglePopup}>
+        +
+      </button>
+      {showPopup && <Popup onClose={togglePopup} />}
+    </div>
   );
 };
 

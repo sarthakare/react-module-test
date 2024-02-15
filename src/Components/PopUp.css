@@ -1,0 +1,94 @@
+/* styles.css */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 15px;
+  width: 30vw;
+  z-index: 1000; /* Ensure the pop-up is above other content */
+}
+
+.popup-content {
+  text-align: left;
+}
+
+#groupName {
+  display: flex;
+}
+
+#groupNameInput {
+  border-radius: 20px;
+  height: 20px;
+  width: 50%;
+  border-color: #cccccc;
+  border-width: 2px;
+  margin: 20px;
+  padding-left: 20px;
+}
+
+#chooseColor {
+  display: flex;
+}
+
+#titleColor {
+  padding: 20px;
+}
+
+.color {
+  border-radius: 50px;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  border-color: transparent;
+}
+
+.color:hover {
+  border-color: navy;
+  border-width: 3px;
+}
+
+#color-1 {
+  background-color: #b38bfa;
+}
+
+#color-2 {
+  background-color: #ff79f2;
+}
+
+#color-3 {
+  background-color: #43e6fc;
+}
+
+#color-4 {
+  background-color: #f19576;
+}
+
+#color-5 {
+  background-color: #0047ff;
+}
+
+#color-6 {
+  background-color: #6691ff;
+}
+
+#createBtn {
+  background-color: #001f8b;
+  color: #ffffff;
+  border-radius: 15px;
+  width: 5vw;
+  height: 5vh;
+  margin-left: 25vw;
+}
+
+#createBtn:hover {
+  border-color: #001f8b;
+  color: #001f8b;
+  background-color: white;
+  font-size: medium;
+  border-width: 2px;
+  cursor: pointer;
+}
