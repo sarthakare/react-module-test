@@ -1,6 +1,8 @@
+// App.js
 import React, { useState, useEffect } from "react";
 import AddNoteButton from "./Components/AddNoteButton";
 import Note from "./Components/Note";
+import SavedNotes from "./Components/SavedNotes"; // Import the SavedNotes component
 import { IoMdLock } from "react-icons/io";
 import BackgroundImage from "./Images/background-image.png";
 import "./App.css";
@@ -20,11 +22,10 @@ function getFirstCharacters(inputString) {
   return concatenatedString.substring(0, 2);
 }
 
-
-
 const App = () => {
   const [notes, setNotes] = useState([]);
   const [groups, setGroups] = useState([]);
+  const [selectedGroup, setSelectedGroup] = useState(null); // State to keep track of selected group
 
   // Fetch data from localStorage on mount
   useEffect(() => {
@@ -40,9 +41,14 @@ const App = () => {
     setNotes([...notes, <Note key={notes.length} />]);
   };
 
+  // Handle click event on group name
+  const handleGroupClick = (group) => {
+    setSelectedGroup(group);
+  };
+
   // Render group list with first characters
   const groupList = groups.map((group, index) => (
-    <div key={index} className="group">
+    <div key={index} className="group" onClick={() => handleGroupClick(group)}>
       <div id="group-color" style={{ backgroundColor: group.color }}>
         {/* Display the first characters of each word in group.name */}
         {getFirstCharacters(group.name)}
@@ -65,6 +71,14 @@ const App = () => {
         {notes}
       </div>
       <div id="showNotes">
+        {selectedGroup && (
+          <SavedNotes
+            groupName={selectedGroup.name}
+            groupColor={selectedGroup.color}
+            groupTitle={getFirstCharacters(selectedGroup.name)}
+          />
+        )}{" "}
+        {/* Render SavedNotes component if a group is selected */}
         <div>
           <div id="backgroundImageCSS">
             <img id="backgroudImage" src={BackgroundImage} alt="wallpaper" />
