@@ -5,6 +5,7 @@ const Popup = ({ onClose }) => {
   const [groupName, setGroupName] = useState("");
   const [groupColor, setGroupColor] = useState("");
   const [groups, setGroups] = useState([]);
+  const [changesMade, setChangesMade] = useState(false); // Flag to track changes
   const popupRef = useRef(null);
 
   // Handle click outside the popup
@@ -28,8 +29,11 @@ const Popup = ({ onClose }) => {
 
   // Save groups to local storage on change
   useEffect(() => {
-    localStorage.setItem("groups", JSON.stringify(groups));
-  }, [groups]);
+    if (changesMade) {
+      localStorage.setItem("groups", JSON.stringify(groups));
+      setChangesMade(false); // Reset flag after saving changes
+    }
+  }, [groups, changesMade]);
 
   // Handle group creation
   const handleCreateGroup = () => {
@@ -46,19 +50,14 @@ const Popup = ({ onClose }) => {
     setGroups([...groups, newGroup]);
     setGroupName(""); // Clear input field after creating group
     setGroupColor(""); // Reset color selection
+    setChangesMade(true); // Set flag to indicate changes made
   };
 
   // Handle color selection
   const handleColorChange = (color) => {
     setGroupColor(color);
+    setChangesMade(true); // Set flag to indicate changes made
   };
-
-  // Render group list
-  const groupList = groups.map((group, index) => (
-    <div key={index} className="group" style={{ backgroundColor: group.color }}>
-      <h3>{group.name}</h3>
-    </div>
-  ));
 
   return (
     <div className="popup" ref={popupRef}>
@@ -78,7 +77,6 @@ const Popup = ({ onClose }) => {
           <h3>Choose Colour</h3>
           <div id="titleColor">
             <button
-              id="color-1 "
               className={`color ${groupColor === "#b38bfa" ? "active" : ""}`}
               style={{
                 backgroundColor: "#b38bfa",
@@ -131,12 +129,6 @@ const Popup = ({ onClose }) => {
         <button id="createBtn" onClick={handleCreateGroup}>
           Create
         </button>
-
-        {/* Render the list of groups below the create form */}
-        <div className="group-list">
-          <h2>Your Groups</h2>
-          {groupList}
-        </div>
       </div>
     </div>
   );
