@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from "react";
 import AddNoteButton from "./Components/AddNoteButton";
 import Note from "./Components/Note";
@@ -26,6 +25,7 @@ const App = () => {
   const [notes, setNotes] = useState([]);
   const [groups, setGroups] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState(null); // State to keep track of selected group
+  const [showNotes, setShowNotes] = useState(true); // State to control the visibility of showNotes
 
   // Fetch data from localStorage on mount
   useEffect(() => {
@@ -44,6 +44,7 @@ const App = () => {
   // Handle click event on group name
   const handleGroupClick = (group) => {
     setSelectedGroup(group);
+    setShowNotes(false); // Hide showNotes when a group is selected
   };
 
   // Render group list with first characters
@@ -70,16 +71,15 @@ const App = () => {
         </div>
         {notes}
       </div>
-      <div id="showNotes">
-        {selectedGroup && (
-          <SavedNotes
-            groupName={selectedGroup.name}
-            groupColor={selectedGroup.color}
-            groupTitle={getFirstCharacters(selectedGroup.name)}
-          />
-        )}{" "}
+      {selectedGroup && (
+        <SavedNotes
+          groupName={selectedGroup.name}
+          groupColor={selectedGroup.color}
+          groupTitle={getFirstCharacters(selectedGroup.name)}
+        />
+      )}
+      <div id="showNotes" style={{ display: showNotes ? "block" : "none" }}>
         {/* Render SavedNotes component if a group is selected */}
-        <div>
           <div id="backgroundImageCSS">
             <img id="backgroudImage" src={BackgroundImage} alt="wallpaper" />
             <h1>Pocket Notes</h1>
@@ -92,7 +92,6 @@ const App = () => {
             <IoMdLock />
             <p>end-to-end encrypted.</p>
           </div>
-        </div>
       </div>
     </div>
   );

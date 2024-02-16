@@ -9,7 +9,8 @@
   border-radius: 20px;
   padding: 15px;
   width: 30vw;
-  z-index: 1000; /* Ensure the pop-up is above other content */
+  z-index: 1000; 
+  box-shadow: 0 0 490px black;
 }
 
 .popup-content {

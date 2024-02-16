@@ -13,7 +13,7 @@
   background-color: #ffffff;
   height: 100vh;
   position: relative; /* Make the container position relative */
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .group{
@@ -51,9 +51,6 @@
 }
 
 #showNotes {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #dae5f5;
   height: 100vh;
 }
@@ -62,6 +59,7 @@
   font-weight: 500;
   width: 32vw;
   padding:100px;
+  margin-left: 20%;
 }
 
 #backgroudImage {
