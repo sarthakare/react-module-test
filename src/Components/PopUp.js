@@ -51,6 +51,7 @@ const Popup = ({ onClose }) => {
     setGroupName(""); // Clear input field after creating group
     setGroupColor(""); // Reset color selection
     setChangesMade(true); // Set flag to indicate changes made
+    window.location.reload();
   };
 
   // Handle color selection
