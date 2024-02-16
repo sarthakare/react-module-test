@@ -9,15 +9,45 @@
 }
 
 #addNotes {
+  max-width: 30vw;
   background-color: #ffffff;
   height: 100vh;
   position: relative; /* Make the container position relative */
+  overflow-y: scroll;
+}
+
+.group{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.group:hover{
+  background-color: lightgray;
+  border-radius: 15px;
+}
+
+#group-color{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  color: #ffffff;
+  font-size: large;
+  font-weight: bold;
+  margin: 10px 20px;
+}
+
+#group-name{
+  margin-left: 20px;
 }
 
 #addNoteButtonContainer {
-  position: absolute; /* Position the container absolutely */
-  bottom: 20px; /* Align to the bottom */
-  right: 20px; /* Align to the right */
+  position: fixed; /* Position the container absolutely */
+  bottom: 1vw; /* Align to the bottom */
+  left: 22%; /* Align to the right */
 }
 
 #showNotes {
