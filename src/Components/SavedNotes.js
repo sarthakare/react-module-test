@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import "./SavedNotes.css";
 import disableEnter from "../Images/DisableButton.png";
-import enableEnter from "../Images/EnableButton.png.png";
+import enableEnter from "../Images/EnableButton.png";
 
 const SavedNotes = ({ groupName, groupColor, groupTitle }) => {
   const [notesText, setNotesText] = useState(""); 
