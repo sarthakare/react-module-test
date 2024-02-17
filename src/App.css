@@ -1,33 +1,31 @@
-/* App.css */
-
 .container {
   display: grid;
-  grid-template-columns: 1fr 2.5fr; /* Two columns with 1:2 width */
-  grid-gap: 0px; /* Gap between columns */
+  grid-template-columns: 1fr 2.5fr;
+  grid-gap: 0px;
   text-align: center;
-  position: relative; /* Make the container position relative */
+  position: relative;
 }
 
 #addNotes {
   width: 30vw;
   background-color: #ffffff;
   height: 100vh;
-  position: relative; /* Make the container position relative */
+  position: relative;
   overflow-y: auto;
 }
 
-.group{
+.group {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.group:hover{
+.group:hover {
   background-color: lightgray;
   border-radius: 15px;
 }
 
-#group-color{
+#group-color {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,14 +38,14 @@
   margin: 10px 20px;
 }
 
-#group-name{
+#group-name {
   margin-left: 20px;
 }
 
 #addNoteButtonContainer {
-  position: fixed; /* Position the container absolutely */
-  bottom: 1vw; /* Align to the bottom */
-  left: 22%; /* Align to the right */
+  position: fixed;
+  bottom: 1vw;
+  left: 22%;
 }
 
 #showNotes {
@@ -58,7 +56,7 @@
 #backgroundImageCSS {
   font-weight: 500;
   width: 32vw;
-  padding:100px;
+  padding: 100px;
   margin-left: 20%;
 }
 
@@ -67,40 +65,39 @@
 }
 
 #text02 {
-  display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Align items vertically */
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
 #text02 p {
-  margin-left: 5px; /* Add a small margin between the icon and text */
+  margin-left: 5px;
 }
-
 
 @media only screen and (max-width: 600px) {
   .container {
-    grid-template-columns: 1fr; /* Display only one column for mobile view */
+    grid-template-columns: 1fr;
   }
 
   #addNotes {
     min-width: 100%;
-    display: block; /* Always show addNotes on mobile view */
+    display: block;
   }
 
-  #addNoteButtonContainer{
-  position: fixed; /* Position the container absolutely */
-  right: 0px;
+  #addNoteButtonContainer {
+    position: fixed; 
+    right: 0px;
   }
 
-  #showNotes{
+  #showNotes {
     display: none;
   }
 
-  #backgroundImageCSS{
+  #backgroundImageCSS {
     display: none;
   }
 
-  #text02{
+  #text02 {
     display: none;
   }
 }

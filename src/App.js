@@ -1,37 +1,29 @@
 import React, { useState, useEffect } from "react";
 import AddNoteButton from "./Components/AddNoteButton";
 import Note from "./Components/Note";
-import SavedNotes from "./Components/SavedNotes"; // Import the SavedNotes component
+import SavedNotes from "./Components/SavedNotes";
 import { IoMdLock } from "react-icons/io";
 import BackgroundImage from "./Images/background-image.png";
 import "./App.css";
 
 // Function to get the first characters of each word in a string
 function getFirstCharacters(inputString) {
-  // Split the string into an array of words
   const words = inputString.split(" ");
-
-  // Map over the array of words and get the first character of each word
   const firstCharacters = words.map((word) => word[0].toUpperCase());
-
-  // Join the characters into a string
   const concatenatedString = firstCharacters.join("");
-
-  // Return the first two characters of the concatenated string
   return concatenatedString.substring(0, 2);
 }
 
 const App = () => {
   const [notes, setNotes] = useState([]);
   const [groups, setGroups] = useState([]);
-  const [selectedGroup, setSelectedGroup] = useState(null); // State to keep track of selected group
-  const [showNotes, setShowNotes] = useState(true); // State to control the visibility of showNotes
-
-  // Fetch data from localStorage on mount
+  const [selectedGroup, setSelectedGroup] = useState(null); 
+  const [showNotes, setShowNotes] = useState(true); 
+  
+  // Fetch data from localStorage
   useEffect(() => {
     const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
     setNotes(storedNotes);
-
     const storedGroups = JSON.parse(localStorage.getItem("groups")) || [];
     setGroups(storedGroups);
   }, []);
@@ -44,14 +36,13 @@ const App = () => {
   // Handle click event on group name
   const handleGroupClick = (group) => {
     setSelectedGroup(group);
-    setShowNotes(false); // Hide showNotes when a group is selected
+    setShowNotes(false);
   };
 
-  // Render group list with first characters
+  // Render group list
   const groupList = groups.map((group, index) => (
     <div key={index} className="group" onClick={() => handleGroupClick(group)}>
       <div id="group-color" style={{ backgroundColor: group.color }}>
-        {/* Display the first characters of each word in group.name */}
         {getFirstCharacters(group.name)}
       </div>
       <div id="group-name">
@@ -64,13 +55,13 @@ const App = () => {
     <div className="container">
       <div id="addNotes">
         <h1>Pocket Notes</h1>
-        {/* Render the list of groups */}
         <div className="group-list">{groupList}</div>
         <div id="addNoteButtonContainer">
           <AddNoteButton onClick={addNote} />
         </div>
         {notes}
       </div>
+
       {selectedGroup && (
         <SavedNotes
           groupName={selectedGroup.name}
@@ -78,8 +69,8 @@ const App = () => {
           groupTitle={getFirstCharacters(selectedGroup.name)}
         />
       )}
+
       <div id="showNotes" style={{ display: showNotes ? "block" : "none" }}>
-        {/* Render SavedNotes component if a group is selected */}
           <div id="backgroundImageCSS">
             <img id="backgroudImage" src={BackgroundImage} alt="wallpaper" />
             <h1>Pocket Notes</h1>

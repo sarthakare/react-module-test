@@ -5,14 +5,14 @@ const Popup = ({ onClose }) => {
   const [groupName, setGroupName] = useState("");
   const [groupColor, setGroupColor] = useState("");
   const [groups, setGroups] = useState([]);
-  const [changesMade, setChangesMade] = useState(false); // Flag to track changes
+  const [changesMade, setChangesMade] = useState(false);
   const popupRef = useRef(null);
 
   // Handle click outside the popup
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
-        onClose(); // Close the popup
+        onClose();
       }
     };
 
@@ -21,17 +21,17 @@ const Popup = ({ onClose }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
 
-  // Load groups from local storage on mount
+  // Load groups from local storage
   useEffect(() => {
     const storedGroups = JSON.parse(localStorage.getItem("groups"));
     setGroups(storedGroups || []);
   }, []);
 
-  // Save groups to local storage on change
+  // Save groups to local storage
   useEffect(() => {
     if (changesMade) {
       localStorage.setItem("groups", JSON.stringify(groups));
-      setChangesMade(false); // Reset flag after saving changes
+      setChangesMade(false); 
     }
   }, [groups, changesMade]);
 
@@ -48,16 +48,16 @@ const Popup = ({ onClose }) => {
     };
 
     setGroups([...groups, newGroup]);
-    setGroupName(""); // Clear input field after creating group
-    setGroupColor(""); // Reset color selection
-    setChangesMade(true); // Set flag to indicate changes made
+    setGroupName(""); 
+    setGroupColor("");
+    setChangesMade(true);
     window.location.reload();
   };
 
   // Handle color selection
   const handleColorChange = (color) => {
     setGroupColor(color);
-    setChangesMade(true); // Set flag to indicate changes made
+    setChangesMade(true);
   };
 
   return (

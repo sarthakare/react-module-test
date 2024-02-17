@@ -1,28 +1,28 @@
 // SavedNotes.js
 
 import React, { useState, useEffect } from "react";
-import { IoArrowBack } from "react-icons/io5"; // Import IoArrowBack icon
+import { IoArrowBack } from "react-icons/io5";
 import "./SavedNotes.css";
-import disableEnter from "../Images/Vector.png";
-import enableEnter from "../Images/Vector (1).png";
+import disableEnter from "../Images/DisableButton.png";
+import enableEnter from "../Images/EnableButton.png.png";
 
 const SavedNotes = ({ groupName, groupColor, groupTitle }) => {
-  const [notesText, setNotesText] = useState(""); // State to track the text content
-  const [savedData, setSavedData] = useState([]); // State to store saved data from localStorage for specific group
-  const [isSmallScreen, setIsSmallScreen] = useState(false); // State to track if the screen size is small
+  const [notesText, setNotesText] = useState(""); 
+  const [savedData, setSavedData] = useState([]); 
+  const [isSmallScreen, setIsSmallScreen] = useState(false); 
 
   // Function to handle text input change
   const handleTextChange = (event) => {
     setNotesText(event.target.value);
   };
 
-  // Function to format date to "9 Mar 2012"
+  // Function to format date
   const formatDate = (dateString) => {
     const options = { day: "2-digit", month: "short", year: "numeric" };
     return new Date(dateString).toLocaleDateString("en-UK", options);
   };
 
-  // Function to handle saving data to localStorage
+  // Function to sav data to localStorage
   const handleSaveData = () => {
     const currentDate = new Date(); // Get current date and time
     const formattedDate = formatDate(currentDate);
@@ -40,11 +40,11 @@ const SavedNotes = ({ groupName, groupColor, groupTitle }) => {
       "savedData",
       JSON.stringify([...existingData, newData])
     );
-    setSavedData([...savedData, newData]); // Update savedData state
-    setNotesText(""); // Clear the textarea
+    setSavedData([...savedData, newData]);
+    setNotesText(""); 
   };
 
-  // Function to load data from localStorage on component mount
+  // Function to load data from localStorage
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem("savedData")) || [];
     const filteredData = storedData.filter(
@@ -60,15 +60,12 @@ const SavedNotes = ({ groupName, groupColor, groupTitle }) => {
 
   // Function to check if the screen size is small
   const checkScreenSize = () => {
-    setIsSmallScreen(window.innerWidth <= 600); // Adjust the threshold as needed
+    setIsSmallScreen(window.innerWidth <= 600); 
   };
 
   useEffect(() => {
-    // Check screen size on component mount
     checkScreenSize();
-    // Add event listener for screen size changes
     window.addEventListener("resize", checkScreenSize);
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("resize", checkScreenSize);
     };
@@ -77,7 +74,6 @@ const SavedNotes = ({ groupName, groupColor, groupTitle }) => {
   return (
     <div className="savedNotesClass">
       <div className="savedNotesTitle">
-        {/* Render back button only if the screen size is small */}
         {isSmallScreen && (
           <IoArrowBack className="backButton" onClick={handleBackButtonClick} />
         )}
@@ -96,7 +92,6 @@ const SavedNotes = ({ groupName, groupColor, groupTitle }) => {
           value={notesText}
           onChange={handleTextChange}
         />
-        {/* Conditional rendering of images based on the content of notesInput */}
         {notesText ? (
           <img
             className="enterButton"
@@ -109,7 +104,6 @@ const SavedNotes = ({ groupName, groupColor, groupTitle }) => {
           <img className="enterButton" src={disableEnter} alt="disableEnter" />
         )}
       </div>
-      {/* Render saved data specific to the selected group */}
       <div className="savedDataContainer">
         {savedData.map((item, index) => (
           <div key={index} className="noteItem">
