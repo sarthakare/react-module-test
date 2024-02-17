@@ -1,4 +1,7 @@
+// SavedNotes.js
+
 import React, { useState, useEffect } from "react";
+import { IoArrowBack } from "react-icons/io5"; // Import IoArrowBack icon
 import "./SavedNotes.css";
 import disableEnter from "../Images/Vector.png";
 import enableEnter from "../Images/Vector (1).png";
@@ -6,6 +9,7 @@ import enableEnter from "../Images/Vector (1).png";
 const SavedNotes = ({ groupName, groupColor, groupTitle }) => {
   const [notesText, setNotesText] = useState(""); // State to track the text content
   const [savedData, setSavedData] = useState([]); // State to store saved data from localStorage for specific group
+  const [isSmallScreen, setIsSmallScreen] = useState(false); // State to track if the screen size is small
 
   // Function to handle text input change
   const handleTextChange = (event) => {
@@ -49,9 +53,34 @@ const SavedNotes = ({ groupName, groupColor, groupTitle }) => {
     setSavedData(filteredData);
   }, [groupName]);
 
+  // Function to handle back button click
+  const handleBackButtonClick = () => {
+    window.location.href = "../App.js";
+  };
+
+  // Function to check if the screen size is small
+  const checkScreenSize = () => {
+    setIsSmallScreen(window.innerWidth <= 600); // Adjust the threshold as needed
+  };
+
+  useEffect(() => {
+    // Check screen size on component mount
+    checkScreenSize();
+    // Add event listener for screen size changes
+    window.addEventListener("resize", checkScreenSize);
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
+
   return (
-    <div>
+    <div className="savedNotesClass">
       <div className="savedNotesTitle">
+        {/* Render back button only if the screen size is small */}
+        {isSmallScreen && (
+          <IoArrowBack className="backButton" onClick={handleBackButtonClick} />
+        )}
         <div id="savedNotesColor" style={{ backgroundColor: groupColor }}>
           {groupTitle}
         </div>

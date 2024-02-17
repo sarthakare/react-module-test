@@ -9,7 +9,7 @@
   border-radius: 20px;
   padding: 15px;
   width: 30vw;
-  z-index: 1000; 
+  z-index: 1000;
   box-shadow: 0 0 490px black;
 }
 
@@ -68,4 +68,73 @@
   font-size: medium;
   border-width: 2px;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .popup {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    width: 80%; /* Adjust width for smaller screens */
+    max-width: 300px; /* Set max-width for smaller screens */
+  }
+
+  .popup-content {
+    text-align: center;
+  }
+
+  #groupName {
+    display: flex;
+  }
+
+  #groupNameInput {
+    border-radius: 20px;
+    height: 20px;
+    width: 50%;
+    border-color: #cccccc;
+    border-width: 2px;
+    margin: 20px;
+    padding-left: 20px;
+  }
+
+  #chooseColor {
+    display: flex;
+  }
+
+  #titleColor {
+    padding: 20px;
+  }
+
+  .color {
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border-color: transparent;
+  }
+
+  .color:hover {
+    border-color: navy;
+    border-width: 3px;
+  }
+
+  #createBtn {
+    background-color: #001f8b;
+    color: #ffffff;
+    border-radius: 15px;
+    width: 40vw;
+    height: 5vh;
+    margin-left: 25vw;
+  }
+
+  #createBtn:hover {
+    border-color: #001f8b;
+    color: #001f8b;
+    background-color: white;
+    font-size: medium;
+    border-width: 2px;
+    cursor: pointer;
+  }
 }

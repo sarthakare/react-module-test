@@ -11,7 +11,7 @@ const AddNoteButton = () => {
   };
 
   return (
-    <div>
+    <div id="addNote">
       <button id="add-note-button" onClick={togglePopup}>
         +
       </button>

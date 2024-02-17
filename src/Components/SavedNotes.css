@@ -2,6 +2,12 @@ body {
   background-color: #dae5f5;
 }
 
+.backButton{
+  color: #ffffff;
+  font-size: 2rem;
+  margin: 5% 2%;
+}
+
 .savedNotesTitle {
   display: flex;
   background-color: #001f8b;
@@ -77,4 +83,90 @@ body {
   text-align: right;
   font-weight: 500;
   margin-right: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+
+.savedNotesClass{
+  position: fixed;
+  top: 0px;
+  background-color: #dae5f5;
+}
+.savedNotesTitle {
+  display: flex;
+  background-color: #001f8b;
+  width: 100%;
+}
+
+#savedNotesColor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  color: #ffffff;
+  font-size: large;
+  font-weight: bold;
+  margin: 10px 20px;
+}
+
+#savedNotesName {
+  color: #ffffff;
+}
+
+.notesInputBox {
+  position: fixed;
+  bottom: 0px;
+  background-color: #001f8b;
+  width: 100%;
+  height: 25%;
+}
+
+#notesInput {
+  display: flex;
+  text-align: initial;
+  border-radius: 15px;
+  height: 60%;
+  width: 82%;
+  margin: 20px;
+  padding: 20px;
+}
+
+.enterButton{
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+#enableEnter:hover{
+  background-color: lightgray;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.savedDataContainer{
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.noteItem{
+  text-align: left;
+  width: 85%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 5px;
+  box-shadow: 5px 5px 20px;
+}
+
+#dateTime{
+  text-align: right;
+  font-weight: 500;
+  margin-right: 20px;
+}
+
 }
